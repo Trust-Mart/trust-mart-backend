@@ -1,89 +1,81 @@
-'use strict';
-import type {
-  QueryInterface,
-  Sequelize as SequelizeType,
-} from "sequelize";
+import type { QueryInterface } from "sequelize";
 
-export async function down(
-  queryInterface: QueryInterface
-): Promise<void> {
+import { DataTypes } from "sequelize";
+
+export async function down(queryInterface: QueryInterface): Promise<void> {
   await queryInterface.dropTable("users");
 }
-
-export async function up(
-  queryInterface: QueryInterface,
-  Sequelize: SequelizeType
-): Promise<void> {
+export async function up(queryInterface: QueryInterface): Promise<void> {
   await queryInterface.createTable("users", {
     country: {
       allowNull: true,
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
     },
     email: {
       allowNull: false,
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       unique: true,
     },
     emailVerifiedAt: {
       allowNull: true,
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
     },
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.BIGINT,
+      type: DataTypes.BIGINT,
     },
     isverified: {
       allowNull: true,
       defaultValue: false,
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     lastLoginAt: {
       allowNull: true,
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
     },
     password: {
       allowNull: false,
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     pin: {
       allowNull: true,
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     privatekey: {
       allowNull: true,
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
     },
     smartAccountAddress: {
       allowNull: true,
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     smartAccountBalance: {
       allowNull: true,
       defaultValue: 0,
-      type: Sequelize.DECIMAL(20, 9),
+      type: DataTypes.DECIMAL(20, 9),
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
     },
     username: {
       allowNull: false,
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       unique: true,
     },
     verificationToken: {
       allowNull: true,
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
     walletAddress: {
       allowNull: true,
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
     },
   });
 
@@ -101,7 +93,7 @@ export async function up(
     name: "users_wallet_address_index",
     where: {
       walletAddress: {
-        [Sequelize.Op.ne]: null,
+        [Symbol.for("ne")]: null,
       },
     },
   });
@@ -110,7 +102,7 @@ export async function up(
     name: "users_smart_account_address_index",
     where: {
       smartAccountAddress: {
-        [Sequelize.Op.ne]: null,
+        [Symbol.for("ne")]: null,
       },
     },
   });
@@ -119,7 +111,7 @@ export async function up(
     name: "users_smart_account_balance_index",
     where: {
       smartAccountBalance: {
-        [Sequelize.Op.ne]: null,
+        [Symbol.for("ne")]: null,
       },
     },
   });

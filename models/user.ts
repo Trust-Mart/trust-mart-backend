@@ -1,11 +1,4 @@
-import {
-  CreationOptional,
-  DataTypes,
-  InferAttributes,
-  InferCreationAttributes,
-  Model,
-  Sequelize
-} from "sequelize";
+import { CreationOptional, DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from "sequelize";
 
 export interface UserAttributes {
   country: null | string;
@@ -24,10 +17,7 @@ export interface UserAttributes {
   walletAddress: null | string;
 }
 
-export class User
-  extends Model<InferAttributes<User>, InferCreationAttributes<User>>
-  implements UserAttributes
-{
+export class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> implements UserAttributes {
   declare country: null | string;
   declare email: string;
   declare emailVerifiedAt: Date | null;
@@ -43,9 +33,9 @@ export class User
   declare verificationToken: null | string;
   declare walletAddress: null | string;
 
-// static associate(_models: Record<string, typeof Model>): void {
-//   // define associations later
-// }
+  // static associate(_models: Record<string, typeof Model>): void {
+  //   // define associations later
+  // }
 
   static initModel(sequelize: Sequelize): typeof User {
     User.init(
@@ -77,7 +67,7 @@ export class User
         smartAccountBalance: DataTypes.DECIMAL(20, 9),
         username: {
           allowNull: true,
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
         },
         verificationToken: DataTypes.STRING,
         walletAddress: DataTypes.STRING,
@@ -87,7 +77,7 @@ export class User
         sequelize,
         tableName: "users",
         timestamps: true,
-      }
+      },
     );
 
     return User;

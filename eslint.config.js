@@ -19,33 +19,27 @@ export default tseslint.config(
     },
   },
   perfectionist.configs["recommended-natural"],
-    {
+  {
     files: ["**/*.test.ts", "**/*.spec.ts"],
     plugins: { vitest },
     rules: {
       ...vitest.configs.recommended.rules,
       "@typescript-eslint/unbound-method": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-      ],
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
     },
   },
   {
-    files: ["src/migrations/**/*.ts"],
+    files: ["migrations/**/*.ts"],
     rules: {
       "@typescript-eslint/no-unsafe-call": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
     },
   },
-    {
-    files: ["src/models/**/*.ts"],
+  {
+    files: ["models/**/*.ts"],
     rules: {
-            "@typescript-eslint/no-unused-vars": [
-        "warn",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-      ],
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
     },
   },
 );
