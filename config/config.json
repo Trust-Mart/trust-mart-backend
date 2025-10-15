@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "rootuser",
+    "password": "password",
+    "database": "trustmart",
+    "host": "127.0.0.1",
+    "port": "5432",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "rootuser",
+    "password": "password",
+    "database": "trustmart",
+    "host": "127.0.0.1",
+        "port": "5432",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "rootuser",
+    "password": "password",
+    "database": "trustmart",
+    "host": "0.0.0.1",
+    "port": "5432",
+    "dialect": "postgres"
+  }
+}
